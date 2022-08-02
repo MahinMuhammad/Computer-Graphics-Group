@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0041D2192898CD5C00514F7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0041D2182898CD5C00514F7C /* main.cpp */; };
+		006FC8E22898EDE9006EDA06 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006FC8E12898EDE9006EDA06 /* GLUT.framework */; };
+		006FC8E42898EDEF006EDA06 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006FC8E32898EDEF006EDA06 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		0041D2152898CD5C00514F7C /* HyperDrive */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HyperDrive; sourceTree = BUILT_PRODUCTS_DIR; };
 		0041D2182898CD5C00514F7C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		006FC8E12898EDE9006EDA06 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		006FC8E32898EDEF006EDA06 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				006FC8E42898EDEF006EDA06 /* OpenGL.framework in Frameworks */,
+				006FC8E22898EDE9006EDA06 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 			children = (
 				0041D2172898CD5C00514F7C /* HyperDrive */,
 				0041D2162898CD5C00514F7C /* Products */,
+				006FC8E02898EDE9006EDA06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +67,15 @@
 				0041D2182898CD5C00514F7C /* main.cpp */,
 			);
 			path = HyperDrive;
+			sourceTree = "<group>";
+		};
+		006FC8E02898EDE9006EDA06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				006FC8E32898EDEF006EDA06 /* OpenGL.framework */,
+				006FC8E12898EDE9006EDA06 /* GLUT.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
