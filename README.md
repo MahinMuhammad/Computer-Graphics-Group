@@ -1,3 +1,3 @@
-<h1>Airport Activities<h1>
+<h1>Manhattan Bridge<h1>
 <h3>Indroduction</h3>
-  <p>Airport Activities is a graphical representation of all weather, day and night experience of an international airport from the viewpoint of the runway</p>
+  <p>Manhattan Bridge is a graphical representation of all weather(winter, summer, rainy), day and night view of the Midtown Manhattan and the Manhattan Bridge from the viewpoint of the Brooklyn bridge</p>
