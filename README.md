@@ -1,4 +1,3 @@
-# Computer-Graphics-Group
-Group for course project
-# Airport View
-In our project, we are trying to show an overview of an international airport. The view would consist mostly of terminal, big runway and airplane. There are building in the background. There are trees beside the buildings. In the sky few birds will be seen flying slowly. There will be people seen buys doing things. Planes will be seen landing and taking-off.
+<h1>Manhattan Bridge<h1>
+<h3>Indroduction</h3>
+  <p>Manhattan Bridge is a graphical representation of all weather(winter, summer, rainy), day and night view of the Midtown Manhattan and the Manhattan Bridge from the viewpoint of the Brooklyn bridge</p>
