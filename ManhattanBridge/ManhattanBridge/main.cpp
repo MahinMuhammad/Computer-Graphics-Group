@@ -988,12 +988,170 @@ void Bridge()
     glVertex2f(0.68f,-0.55f);
     glVertex2f(0.68f,-0.5f);
     glEnd();
-    glEnd();
 
 
 
     //RIGHT PILLAR
 
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.8f,0.4f);
+    glEnd();
+
+    glTranslatef(-0.03,0,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.8f,0.4f);
+    glEnd();
+    glLoadIdentity();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.7f,-0.5f);
+    glVertex2f(0.73f,0.4f);
+    glEnd();
+
+    glTranslatef(0.03,0,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.7f,-0.5f);
+    glVertex2f(0.73f,0.4f);
+    glEnd();
+    glLoadIdentity();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.8f,0.4f);
+    glVertex2f(0.73f,0.4f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.7f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.7f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.7f,-0.5f);
+    glVertex2f(0.83f,-0.35f);
+    glEnd();
+
+    glTranslatef(0,0.15,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.7f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.83f,-0.5f);
+    glVertex2f(0.71f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.7f,-0.5f);
+    glVertex2f(0.82f,-0.35f);
+    glEnd();
+    glLoadIdentity();
+
+    glTranslatef(0,0.3,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.82f,-0.5f);
+    glVertex2f(0.71f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.82f,-0.5f);
+    glVertex2f(0.715f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.71f,-0.5f);
+    glVertex2f(0.815f,-0.35f);
+    glEnd();
+    glLoadIdentity();
+
+    glTranslatef(0,0.45,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.81f,-0.5f);
+    glVertex2f(0.72f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.82f,-0.5f);
+    glVertex2f(0.715f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.71f,-0.5f);
+    glVertex2f(0.815f,-0.35f);
+    glEnd();
+    glLoadIdentity();
+
+    glTranslatef(0,0.6,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.81f,-0.5f);
+    glVertex2f(0.72f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.81f,-0.5f);
+    glVertex2f(0.72f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.72f,-0.5f);
+    glVertex2f(0.8f,-0.35f);
+    glEnd();
+    glLoadIdentity();
+
+    glTranslatef(0,0.75,0);
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.8f,-0.5f);
+    glVertex2f(0.73f,-0.5f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.81f,-0.5f);
+    glVertex2f(0.73f,-0.35f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(182, 182, 183);
+    glVertex2f(0.72f,-0.5f);
+    glVertex2f(0.8f,-0.35f);
+    glEnd();
+    glLoadIdentity();
+
+    glBegin(GL_QUADS);
+    glColor3ub(123, 98, 92);
+    glVertex2f(0.85f,-0.5f);
+    glVertex2f(0.85f,-0.55f);
+    glVertex2f(0.68f,-0.55f);
+    glVertex2f(0.68f,-0.5f);
+    glEnd();
 
 
 
