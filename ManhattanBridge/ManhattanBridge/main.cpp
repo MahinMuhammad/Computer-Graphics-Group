@@ -14,12 +14,35 @@ void WinterView();
 void WinterSky();
 void WinterRiver();
 
+bool isNight = false;
+
 GLfloat snowPos = 0.0f;
 GLfloat snowSpd = 0.05f;
 void CircleSnow(GLfloat a, GLfloat b, GLdouble r,int R,int G,int B);
 void snowFall();
 void snowAnimation(int value);
 void Bridge();
+
+GLfloat position_car1 = 0.0f, speed_car1 = 0.1f, rotation_car1 = 0.0f;
+void animation_car1(int value);
+void display_car1();
+
+GLfloat position_car2 = 0.0f, speed_car2 = 0.1f, rotation_car2 = 0.0f;
+void animation_car2(int value);
+void display_car2();
+
+GLfloat position_car3 = 0.0f, speed_car3 = 0.1f, rotation_car3 = 0.0f;
+void animation_car3(int value);
+void display_car3();
+
+GLfloat position_car4 = 0.0f, speed_car4 = 0.1f, rotation_car4 = 0.0f;
+void animation_car4(int value);
+void display_car4();
+
+GLfloat position_car5 = 0.0f, speed_car5 = 0.1f, rotation_car5 = 0.0f;
+void animation_car5(int value);
+void display_car5();
+
 
 int main(int argc, char** argv)
 {
@@ -29,6 +52,15 @@ int main(int argc, char** argv)
 
     glutDisplayFunc(WinterView);
     glutPostRedisplay();
+    glutTimerFunc(10, animation_car1,0);
+
+    glutTimerFunc(10, animation_car2,0);
+
+    glutTimerFunc(10, animation_car3,0);
+
+    glutTimerFunc(10, animation_car4,0);
+
+    glutTimerFunc(10, animation_car5,0);
     glutTimerFunc(100, snowAnimation, 0);
 
     glutMainLoop();
@@ -44,6 +76,17 @@ void WinterView()
     WinterRiver();
 
     WinterSky();
+
+    glTranslatef(0.0,-0.122,0);
+    display_car1();
+    display_car4();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.134,0);
+    display_car2();
+    display_car3();
+    display_car5();
+    glLoadIdentity();
 
     glPushMatrix();
     glTranslatef(0,snowPos,0);
@@ -1150,6 +1193,1484 @@ void Bridge()
     glVertex2f(0.05f,-0.18f);
     glVertex2f(0.05f,-0.07f);
     glEnd();
+}
+
+
+
+void animation_car1(int value)
+{
+
+    if(position_car1 > 1.0)
+    {
+        position_car1 = -1.0f;
+    }
+
+    position_car1 += speed_car1;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(200, animation_car1, 0);
+}
+
+
+
+void display_car1()
+{
+
+    glPushMatrix();
+    glTranslatef(position_car1,0,0);
+
+
+    glScalef(0.2,0.2,0);
+    glBegin(GL_QUADS); // bus body
+    glColor3ub(249,216,216);
+    glVertex2f(-0.2f,0.1f);
+    glVertex2f(-0.2f,-0.1f);
+    glVertex2f(0.25f,-0.1f);
+    glVertex2f(0.2f,0.1f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // design
+    glColor3ub(253,174,174);
+    glVertex2f(-0.06f,0.1f);
+    glVertex2f(0.0f,-0.1f);
+    glVertex2f(0.08f,-0.1f);
+    glVertex2f(0.02f,0.1f);
+
+    glEnd();
+
+
+    glColor3ub(0,0,0) ;
+    int i_car;
+
+    GLfloat x_car=.15f;
+    GLfloat y_car=-0.1f;
+    GLfloat radius_car =.05f;
+    int triangleAmount_car = 20;
+
+    GLfloat twicePi_car = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 1
+    glVertex2f(x_car, y_car);
+    for(i_car = 0; i_car <= triangleAmount_car; i_car++)
+    {
+        glVertex2f(
+            x_car + (radius_car * cos(i_car *  twicePi_car / triangleAmount_car)),
+            y_car + (radius_car * sin(i_car * twicePi_car / triangleAmount_car))
+        );
+    }
+    glEnd();
+
+
+    glTranslatef(-0.25,0.0,0.0);
+    glColor3ub(0,0,0) ;
+    int j_car;
+
+    GLfloat x_car1=.15f;
+    GLfloat y_car1=-0.1f;
+    GLfloat radius_car1 =.05f;
+    int triangleAmount_car1 = 20;
+
+    GLfloat twicePi_car1 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 2
+    glVertex2f(x_car, y_car);
+    for(j_car = 0; j_car <= triangleAmount_car1; j_car++)
+    {
+        glVertex2f(
+            x_car1 + (radius_car1 * cos(j_car *  twicePi_car1 / triangleAmount_car1)),
+            y_car1 + (radius_car1 * sin(j_car * twicePi_car1 / triangleAmount_car1))
+        );
+    }
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslatef(position_car1,0,0);
+
+
+    glScalef(0.2,0.2,0);
+    glBegin(GL_QUADS); // mirror
+    if(!isNight)
+    {
+           glColor3ub(64,224,208);
+    }
+    if(isNight)
+    {
+        glColor3ub(241, 201, 8);
+    }
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(-0.195f,0.0f);
+    glVertex2f(0.219f,0.0f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // back light
+    glColor3ub(255,69,0);
+    glVertex2f(-0.2f,-0.03f);
+    glVertex2f(-0.2f,-0.06f);
+    glVertex2f(-0.18f,-0.06f);
+    glVertex2f(-0.18f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // head light
+    glColor3ub(255,69,0);
+    glVertex2f(0.21f,-0.03f);
+    glVertex2f(0.21f,-0.06f);
+    glVertex2f(0.24f,-0.06f);
+    glVertex2f(0.234f,-0.03f);
+
+    glEnd();
+
+    glLineWidth(1);
+    glBegin(GL_LINES);// mirror outline 1
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(-0.195f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 2
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.0f);
+    glVertex2f(0.219f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 3
+    glColor3ub(0,0,0);
+    glVertex2f(0.219f,0.0f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 4
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror border 1
+    glColor3ub(0,0,0);
+    glVertex2f(-0.04f,0.08f);
+    glVertex2f(-0.04f,0.00f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror border 2
+    glColor3ub(0,0,0);
+    glVertex2f(0.1f,0.08f);
+    glVertex2f(0.1f,0.00f);
+
+    glEnd();
+
+
+
+    glPushMatrix();
+    glTranslatef(-0.1,-0.1,0.0);
+    glRotatef(rotation_car1,0.0,0.0,-0.1); // wheel 1 rotation
+
+    glScalef(0.2,0.2,0);
+    glLineWidth(5);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car1 += 0.1f;
+
+
+    glPushMatrix();
+    glTranslatef(0.15,-0.1,0.0);
+    glRotatef(rotation_car1,0.0,0.0,-0.1); // wheel 2 rotation
+
+    glScalef(0.2,0.2,0);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(249,216,216);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car1 += 0.1f;
+
+
+
+
+    glPopMatrix();
+
+}
+
+
+
+void animation_car2(int value)
+{
+
+    if(position_car2 < -1.0)
+    {
+        position_car2 = 1.0f;
+    }
+
+    position_car2 -= speed_car2;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(200, animation_car2, 0);
+}
+
+
+
+void display_car2()
+{
+
+    glPushMatrix();
+    glTranslatef(position_car2,0,0);
+
+
+    glScalef(0.1,0.1,0);
+    glBegin(GL_QUADS); // car upper body
+    glColor3ub(101,92,92);
+    glVertex2f(-0.1f,0.2f);
+    glVertex2f(-0.2f,0.1f);
+    glVertex2f(0.2f,0.1f);
+    glVertex2f(0.1f,0.2f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car lower body
+    glColor3ub(101,92,92);
+    glVertex2f(-0.4f,0.1f);
+    glVertex2f(-0.45f,-0.1f);
+    glVertex2f(0.3f,-0.1f);
+    glVertex2f(0.3f,0.1f);
+
+    glEnd();
+
+
+    glBegin(GL_QUADS); // car design
+    glColor3ub(54,51,51);
+    glVertex2f(-0.414f,0.05f);
+    glVertex2f(-0.438f,-0.05f);
+    glVertex2f(0.3f,-0.05f);
+    glVertex2f(0.3f,0.05f);
+
+    glEnd();
+
+
+
+    glColor3ub(0,0,0) ;
+    int i_car3;
+
+    GLfloat x_car3=.15f;
+    GLfloat y_car3=-0.1f;
+    GLfloat radius_car3 =.06f;
+    int triangleAmount_car3 = 20;
+
+    GLfloat twicePi_car3 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 1
+    glVertex2f(x_car3, y_car3);
+    for(i_car3 = 0; i_car3 <= triangleAmount_car3; i_car3++)
+    {
+        glVertex2f(
+            x_car3 + (radius_car3 * cos(i_car3 *  twicePi_car3 / triangleAmount_car3)),
+            y_car3 + (radius_car3 * sin(i_car3 * twicePi_car3 / triangleAmount_car3))
+        );
+    }
+    glEnd();
+
+
+    glTranslatef(-0.4,0.0,0.0);
+    glColor3ub(0,0,0) ;
+    int j_car4;
+
+    GLfloat x_car4=.15f;
+    GLfloat y_car4=-0.1f;
+    GLfloat radius_car4 =.06f;
+    int triangleAmount_car4 = 20;
+
+    GLfloat twicePi_car4 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 2
+    glVertex2f(x_car4, y_car4);
+    for(j_car4 = 0; j_car4 <= triangleAmount_car4; j_car4++)
+    {
+        glVertex2f(
+            x_car4 + (radius_car4 * cos(j_car4 *  twicePi_car4 / triangleAmount_car4)),
+            y_car4 + (radius_car4 * sin(j_car4 * twicePi_car4 / triangleAmount_car4))
+        );
+    }
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(position_car2,0,0);
+
+
+    glScalef(0.1,0.1,0);
+    glBegin(GL_QUADS); // car mirror
+    if(!isNight)
+    {
+        glColor3ub(64,224,208);
+        glVertex2f(-0.095f,0.19f);
+        glVertex2f(-0.185f,0.1f);
+        glVertex2f(0.185f,0.1f);
+        glVertex2f(0.095f,0.19f);
+    }
+    if(isNight)
+    {
+        glColor3ub(250, 237, 172);
+        glVertex2f(-0.095f,0.19f);
+        glVertex2f(-0.185f,0.1f);
+        glVertex2f(0.185f,0.1f);
+        glVertex2f(0.095f,0.19f);
+    }
+
+    glEnd();
+
+    glBegin(GL_LINES); // mirror line
+    glColor3ub(0,0,0);
+    glVertex2f(0.01f,0.19f);
+    glVertex2f(0.0f,0.1f);
+
+    glEnd();
+
+
+    glBegin(GL_QUADS); // car headlight
+    glColor3ub(255,99,71);
+    glVertex2f(-0.423f,0.015f);
+    glVertex2f(-0.431f,-0.015f);
+    glVertex2f(-0.39f,-0.015f);
+    glVertex2f(-0.39f,0.015f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car back light
+    glColor3ub(255,99,71);
+    glVertex2f(0.285f,0.015f);
+    glVertex2f(0.285f,-0.015f);
+    glVertex2f(0.3f,-0.015f);
+    glVertex2f(0.3f,0.015f);
+
+    glEnd();
+
+
+    glPushMatrix();
+    glTranslatef(-0.25,-0.1,0.0);
+    glRotatef(rotation_car1,0.0,0.0,0.1); // wheel 1 rotation
+
+    glScalef(0.1,0.1,0);
+    glLineWidth(5);
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car1 += 0.1f;
+
+
+    glPushMatrix();
+    glTranslatef(0.15,-0.1,0.0);
+    glRotatef(rotation_car1,0.0,0.0,0.1); // wheel 2 rotation
+
+    glScalef(0.1,0.1,0);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(101,92,92);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car1 += 0.1f;
+
+
+    glPopMatrix();
+}
+
+
+
+void animation_car3(int value)
+{
+
+    if(position_car3 > 1.0)
+    {
+        position_car3 = -1.0f;
+    }
+
+    position_car3 += speed_car3;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(300, animation_car3, 0);
+}
+
+
+
+void display_car3()
+{
+
+    glPushMatrix();
+    glTranslatef(position_car3,0,0);
+
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_QUADS); // car upper body
+    glColor3ub(166,1,1);
+    glVertex2f(-0.1f,0.2f);
+    glVertex2f(-0.2f,0.1f);
+    glVertex2f(0.2f,0.1f);
+    glVertex2f(0.1f,0.2f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car lower body
+    glColor3ub(166,1,1);
+    glVertex2f(-0.4f,0.1f);
+    glVertex2f(-0.45f,-0.1f);
+    glVertex2f(0.3f,-0.1f);
+    glVertex2f(0.3f,0.1f);
+
+    glEnd();
+
+
+
+    glColor3ub(0,0,0) ;
+    int i_car5;
+
+    GLfloat x_car5=.15f;
+    GLfloat y_car5=-0.1f;
+    GLfloat radius_car5 =.06f;
+    int triangleAmount_car5 = 20;
+
+    GLfloat twicePi_car5 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 1
+    glVertex2f(x_car5, y_car5);
+    for(i_car5 = 0; i_car5 <= triangleAmount_car5; i_car5++)
+    {
+        glVertex2f(
+            x_car5 + (radius_car5 * cos(i_car5 *  twicePi_car5 / triangleAmount_car5)),
+            y_car5 + (radius_car5 * sin(i_car5 * twicePi_car5 / triangleAmount_car5))
+        );
+    }
+    glEnd();
+
+
+    glTranslatef(-0.4,0.0,0.0);
+    glColor3ub(0,0,0) ;
+    int j_car6;
+
+    GLfloat x_car6=.15f;
+    GLfloat y_car6=-0.1f;
+    GLfloat radius_car6 =.06f;
+    int triangleAmount_car6 = 20;
+
+    GLfloat twicePi_car6 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 2
+    glVertex2f(x_car6, y_car6);
+    for(j_car6 = 0; j_car6 <= triangleAmount_car6; j_car6++)
+    {
+        glVertex2f(
+            x_car6 + (radius_car6 * cos(j_car6 *  twicePi_car6 / triangleAmount_car6)),
+            y_car6 + (radius_car6 * sin(j_car6 * twicePi_car6 / triangleAmount_car6))
+        );
+    }
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(position_car3,0,0);
+
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_QUADS); // car mirror
+    glColor3ub(64,224,208);
+    glVertex2f(-0.095f,0.19f);
+    glVertex2f(-0.185f,0.1f);
+    glVertex2f(0.185f,0.1f);
+    glVertex2f(0.095f,0.19f);
+
+    glEnd();
+
+    glBegin(GL_LINES); // mirror line
+    glColor3ub(0,0,0);
+    glVertex2f(0.01f,0.19f);
+    glVertex2f(0.0f,0.1f);
+
+    glEnd();
+
+
+    glBegin(GL_QUADS); // car headlight
+    glColor3ub(255,99,71);
+    glVertex2f(-0.423f,0.015f);
+    glVertex2f(-0.431f,-0.015f);
+    glVertex2f(-0.39f,-0.015f);
+    glVertex2f(-0.39f,0.015f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car back light
+    glColor3ub(255,99,71);
+    glVertex2f(0.285f,0.015f);
+    glVertex2f(0.285f,-0.015f);
+    glVertex2f(0.3f,-0.015f);
+    glVertex2f(0.3f,0.015f);
+
+    glEnd();
+
+
+    glPushMatrix();
+    glTranslatef(-0.25,-0.1,0.0);
+    glRotatef(rotation_car3,0.0,0.0,0.1); // wheel 1 rotation
+
+    glScalef(-0.1,0.1,0);
+    glLineWidth(5);
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car3 += 0.1f;
+
+
+    glPushMatrix();
+    glTranslatef(0.15,-0.1,0.0);
+    glRotatef(rotation_car3,0.0,0.0,0.1); // wheel 2 rotation
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car3 += 0.1f;
+
+
+    glPopMatrix();
+
+}
+
+
+
+void animation_car4(int value)
+{
+
+    if(position_car4 < -1.0)
+    {
+        position_car4 = 1.0f;
+    }
+
+    position_car4 -= speed_car4;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(400, animation_car4, 0);
+}
+
+
+
+void display_car4()
+{
+
+
+    glPushMatrix();
+    glTranslatef(position_car4,0,0);
+
+
+    glScalef(-0.2,0.2,0);
+    glBegin(GL_QUADS); // bus body
+    glColor3ub(175,161,161);
+    glVertex2f(-0.2f,0.1f);
+    glVertex2f(-0.2f,-0.1f);
+    glVertex2f(0.25f,-0.1f);
+    glVertex2f(0.2f,0.1f);
+
+    glEnd();
+
+
+    glColor3ub(0,0,0) ;
+    int i_car;
+
+    GLfloat x_car=.15f;
+    GLfloat y_car=-0.1f;
+    GLfloat radius_car =.05f;
+    int triangleAmount_car = 20;
+
+    GLfloat twicePi_car = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 1
+    glVertex2f(x_car, y_car);
+    for(i_car = 0; i_car <= triangleAmount_car; i_car++)
+    {
+        glVertex2f(
+            x_car + (radius_car * cos(i_car *  twicePi_car / triangleAmount_car)),
+            y_car + (radius_car * sin(i_car * twicePi_car / triangleAmount_car))
+        );
+    }
+    glEnd();
+
+
+    glTranslatef(-0.25,0.0,0.0);
+    glColor3ub(0,0,0) ;
+    int j_car;
+
+    GLfloat x_car1=.15f;
+    GLfloat y_car1=-0.1f;
+    GLfloat radius_car1 =.05f;
+    int triangleAmount_car1 = 20;
+
+    GLfloat twicePi_car1 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 2
+    glVertex2f(x_car, y_car);
+    for(j_car = 0; j_car <= triangleAmount_car1; j_car++)
+    {
+        glVertex2f(
+            x_car1 + (radius_car1 * cos(j_car *  twicePi_car1 / triangleAmount_car1)),
+            y_car1 + (radius_car1 * sin(j_car * twicePi_car1 / triangleAmount_car1))
+        );
+    }
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glPopMatrix();
+
+
+
+    glPushMatrix();
+    glTranslatef(position_car4,0,0);
+
+
+    glScalef(-0.2,0.2,0);
+    glBegin(GL_QUADS); // mirror
+    glColor3ub(64,224,208);
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(-0.195f,0.0f);
+    glVertex2f(0.219f,0.0f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // back light
+    glColor3ub(255,69,0);
+    glVertex2f(-0.2f,-0.03f);
+    glVertex2f(-0.2f,-0.06f);
+    glVertex2f(-0.18f,-0.06f);
+    glVertex2f(-0.18f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // head light
+    glColor3ub(255,69,0);
+    glVertex2f(0.21f,-0.03f);
+    glVertex2f(0.21f,-0.06f);
+    glVertex2f(0.24f,-0.06f);
+    glVertex2f(0.234f,-0.03f);
+
+    glEnd();
+
+    glLineWidth(1);
+    glBegin(GL_LINES);// mirror outline 1
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(-0.195f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 2
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.0f);
+    glVertex2f(0.219f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 3
+    glColor3ub(0,0,0);
+    glVertex2f(0.219f,0.0f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror outline 4
+    glColor3ub(0,0,0);
+    glVertex2f(-0.195f,0.08f);
+    glVertex2f(0.2f,0.08f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror border 1
+    glColor3ub(0,0,0);
+    glVertex2f(-0.04f,0.08f);
+    glVertex2f(-0.04f,0.00f);
+
+    glEnd();
+
+    glBegin(GL_LINES);// mirror border 2
+    glColor3ub(0,0,0);
+    glVertex2f(0.1f,0.08f);
+    glVertex2f(0.1f,0.00f);
+
+    glEnd();
+
+
+
+    glPushMatrix();
+    glTranslatef(-0.1,-0.1,0.0);
+    glRotatef(rotation_car4,0.0,0.0,-0.1); // wheel 1 rotation
+
+    glScalef(-0.2,0.2,0);
+    glLineWidth(5);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car4 += 0.1f;
+
+
+    glPushMatrix();
+    glTranslatef(0.15,-0.1,0.0);
+    glRotatef(rotation_car4,0.0,0.0,-0.1); // wheel 2 rotation
+
+    glScalef(-0.2,0.2,0);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(222,211,211);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car4 += 0.1f;
+
+
+    glPopMatrix();
+}
+
+
+
+void animation_car5(int value)
+{
+
+    if(position_car5 > 1.0)
+    {
+        position_car5 = -1.0f;
+    }
+
+    position_car5 += speed_car5;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(100, animation_car5, 0);
+}
+
+
+
+void display_car5()
+{
+
+    glPushMatrix();
+    glTranslatef(position_car5,0,0);
+
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_QUADS); // car upper body
+    glColor3ub(71,85,141);
+    glVertex2f(-0.1f,0.2f);
+    glVertex2f(-0.2f,0.1f);
+    glVertex2f(0.2f,0.1f);
+    glVertex2f(0.1f,0.2f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car lower body
+    glColor3ub(71,85,141);
+    glVertex2f(-0.4f,0.1f);
+    glVertex2f(-0.45f,-0.1f);
+    glVertex2f(0.3f,-0.1f);
+    glVertex2f(0.3f,0.1f);
+
+    glEnd();
+
+
+    glBegin(GL_QUADS); // car design
+    glColor3ub(17,38,145);
+    glVertex2f(-0.414f,0.05f);
+    glVertex2f(-0.438f,-0.05f);
+    glVertex2f(0.3f,-0.05f);
+    glVertex2f(0.3f,0.05f);
+
+    glEnd();
+
+
+
+    glColor3ub(0,0,0) ;
+    int i_car5;
+
+    GLfloat x_car5=.15f;
+    GLfloat y_car5=-0.1f;
+    GLfloat radius_car5 =.06f;
+    int triangleAmount_car5 = 20;
+
+    GLfloat twicePi_car5 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 1
+    glVertex2f(x_car5, y_car5);
+    for(i_car5 = 0; i_car5 <= triangleAmount_car5; i_car5++)
+    {
+        glVertex2f(
+            x_car5 + (radius_car5 * cos(i_car5 *  twicePi_car5 / triangleAmount_car5)),
+            y_car5 + (radius_car5 * sin(i_car5 * twicePi_car5 / triangleAmount_car5))
+        );
+    }
+    glEnd();
+
+
+    glTranslatef(-0.4,0.0,0.0);
+    glColor3ub(0,0,0) ;
+    int j_car6;
+
+    GLfloat x_car6=.15f;
+    GLfloat y_car6=-0.1f;
+    GLfloat radius_car6 =.06f;
+    int triangleAmount_car6 = 20;
+
+    GLfloat twicePi_car6 = 2.0f * PI;
+
+
+    glBegin(GL_TRIANGLE_FAN); //wheel 2
+    glVertex2f(x_car6, y_car6);
+    for(j_car6 = 0; j_car6 <= triangleAmount_car6; j_car6++)
+    {
+        glVertex2f(
+            x_car6 + (radius_car6 * cos(j_car6 *  twicePi_car6 / triangleAmount_car6)),
+            y_car6 + (radius_car6 * sin(j_car6 * twicePi_car6 / triangleAmount_car6))
+        );
+    }
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(position_car5,0,0);
+
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_QUADS); // car mirror
+    glColor3ub(64,224,208);
+    glVertex2f(-0.095f,0.19f);
+    glVertex2f(-0.185f,0.1f);
+    glVertex2f(0.185f,0.1f);
+    glVertex2f(0.095f,0.19f);
+
+    glEnd();
+
+    glBegin(GL_LINES); // mirror line
+    glColor3ub(0,0,0);
+    glVertex2f(0.01f,0.19f);
+    glVertex2f(0.0f,0.1f);
+
+    glEnd();
+
+
+    glBegin(GL_QUADS); // car headlight
+    glColor3ub(255,99,71);
+    glVertex2f(-0.423f,0.015f);
+    glVertex2f(-0.431f,-0.015f);
+    glVertex2f(-0.39f,-0.015f);
+    glVertex2f(-0.39f,0.015f);
+
+    glEnd();
+
+    glBegin(GL_QUADS); // car back light
+    glColor3ub(255,99,71);
+    glVertex2f(0.285f,0.015f);
+    glVertex2f(0.285f,-0.015f);
+    glVertex2f(0.3f,-0.015f);
+    glVertex2f(0.3f,0.015f);
+
+    glEnd();
+
+
+    glPushMatrix();
+    glTranslatef(-0.25,-0.1,0.0);
+    glRotatef(rotation_car5,0.0,0.0,0.1); // wheel 1 rotation
+
+    glScalef(-0.1,0.1,0);
+    glLineWidth(5);
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line vertical
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line horizontal
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car5 += 0.1f;
+
+
+    glPushMatrix();
+    glTranslatef(0.15,-0.1,0.0);
+    glRotatef(rotation_car5,0.0,0.0,0.1); // wheel 2 rotation
+
+    glScalef(-0.1,0.1,0);
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.0f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.03f,-0.03f);
+
+    glEnd();
+
+    glBegin(GL_LINES);//wheel line slanted
+    glColor3ub(166,1,1);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(0.03f,0.03f);
+
+    glEnd();
+
+    glPopMatrix();
+    rotation_car5 += 0.1f;
+
+
+    glPopMatrix();
 }
 
 
