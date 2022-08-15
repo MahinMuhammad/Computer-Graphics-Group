@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1660549070 source:c:\users\user\desktop\cggg\computer-graphics-group\manhattanbridge\manhattanbridge\main.cpp
+	<GLUT/glut.h>
+	<windows.h>
+	<GL/glut.h>
+	<math.h>
+	<cstdio>
+	<cctype>
+
