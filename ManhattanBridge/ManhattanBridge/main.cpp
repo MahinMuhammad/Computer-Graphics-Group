@@ -10,9 +10,17 @@
 # define PI 3.14159265358979323846
 #include <cctype>
 
+void handleKeypress(unsigned char key, int x, int y);
+
 void WinterView();
 void WinterSky();
 void WinterRiver();
+
+void DayView();
+void DayRiver();
+void DaySky();
+
+void Sun();
 
 bool isNight = false;
 
@@ -22,6 +30,15 @@ void CircleSnow(GLfloat a, GLfloat b, GLdouble r,int R,int G,int B);
 void snowFall();
 void snowAnimation(int value);
 void Bridge();
+
+void Clock();
+void Idle();
+void OuterCircleForClock(GLfloat a, GLfloat b, GLfloat r);
+void InnerCircleForClock(GLfloat a, GLfloat b, GLfloat r);
+GLfloat ClockHour = 0.0f;
+GLfloat ClockMinute = 0.0f;
+GLfloat ClockSecond = 0.0f;
+
 
 void window1();
 void window2();
@@ -70,15 +87,15 @@ int main(int argc, char** argv)
 
     glutDisplayFunc(WinterView);
     glutPostRedisplay();
+    
+    glutKeyboardFunc(handleKeypress);
+    
     glutTimerFunc(10, animation_car1,0);
-
     glutTimerFunc(10, animation_car2,0);
-
     glutTimerFunc(10, animation_car3,0);
-
     glutTimerFunc(10, animation_car4,0);
-
     glutTimerFunc(10, animation_car5,0);
+    
     glutTimerFunc(100, snowAnimation, 0);
 
     glutMainLoop();
@@ -94,8 +111,15 @@ void WinterView()
     WinterRiver();
 
     WinterSky();
-    
+
     Buildings();
+
+    glTranslatef(0.278,0.8,0);
+	glScalef(0.02,0.02,0);
+	Clock();
+	glLoadIdentity();
+
+
 
     glTranslatef(0.0,-0.122,0);
     display_car1();
@@ -4102,3 +4126,219 @@ void Buildings()
 
 
 
+void Clock()
+{
+    OuterCircleForClock(0.0f, 0.0f, 1.0f);
+
+ glPushMatrix();
+    glRotatef(ClockHour,0.0,0.0,0.1);
+    glBegin(GL_TRIANGLES);
+    glColor3ub(0,0,0);
+    glVertex2f(-0.05f,0.0f);
+    glVertex2f(0.05f,0.0f);
+    glVertex2f(0.0f,0.6f);
+    glEnd();
+    glPopMatrix();
+    ClockHour-=0.01f;
+
+    glPushMatrix();
+    glRotatef(ClockMinute,0.0,0.0,0.1);
+    glBegin(GL_TRIANGLES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,0.05f);
+    glVertex2f(0.0f,-0.05f);
+    glVertex2f(0.75f,0.0f);
+    glEnd();
+    glPopMatrix();
+    ClockMinute-=0.03f;
+
+    glPushMatrix();
+    glRotatef(ClockSecond,0.0,0.0,0.1);
+    glLineWidth(2);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,0);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.75f,0.0f);
+    glEnd();
+    glPopMatrix();
+    ClockSecond-=0.1f;
+
+    InnerCircleForClock(0.0f, 0.0f, 0.1f);
+
+    glLineWidth(7);
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,-1.0f);
+    glVertex2f(0.0f,-0.8f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,1.0f);
+    glVertex2f(0.0f,0.8f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(-1.0f,0.0f);
+    glVertex2f(-0.8f,0.0f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(1.0f,0.0f);
+    glVertex2f(0.8f,0.0f);
+    glEnd();
+}
+
+void OuterCircleForClock(GLfloat a, GLfloat b, GLfloat r)
+{
+    int i;
+
+    GLfloat x=a;
+    GLfloat y=b;
+    GLfloat radius =r;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,255,255);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
+
+
+
+void InnerCircleForClock(GLfloat a, GLfloat b, GLfloat r)
+{
+    int i;
+
+    GLfloat x=a;
+    GLfloat y=b;
+    GLfloat radius =r;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,0,0);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
+
+void handleKeypress(unsigned char key, int x, int y)
+{
+    switch (tolower(key))
+    {
+        case 'w':
+            glutDisplayFunc(WinterView);
+            isNight = false;
+            glutPostRedisplay();
+            break;
+            
+        case 'd':
+            glutDisplayFunc(DayView);
+            isNight = false;
+            glutPostRedisplay();
+            break;
+    }
+}
+
+void DayView()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+
+
+    DayRiver();
+
+    DaySky();
+
+    Sun();
+
+    Buildings();
+
+    glTranslatef(0.278,0.8,0);
+    glScalef(0.02,0.02,0);
+    Clock();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.122,0);
+    display_car1();
+    display_car4();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.134,0);
+    display_car2();
+    display_car3();
+    display_car5();
+    glLoadIdentity();
+
+    Bridge();
+
+    glFlush();
+}
+
+
+void Sun()
+{
+    int i;
+
+    GLfloat x=0.9f;
+    GLfloat y=0.9f;
+    GLfloat radius =0.2f;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(245, 245, 40);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
+
+void DaySky()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(57, 162, 244);
+    glVertex2f(-1.0f,1.0f);
+    glColor3ub(177, 231, 247);
+    glVertex2f(-1.0f,-0.15f);
+    glVertex2f(1.0f,-0.15f);
+    glVertex2f(1.0f,1.0f);
+    glEnd();
+}
+
+void DayRiver()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(32, 160, 180);
+    glVertex2f(-1.0f,-0.27f);
+    glVertex2f(-1.0f,-1.0f);
+    glVertex2f(1.0f,-1.0f);
+    glVertex2f(1.0f,-0.27f);
+    glEnd();
+}
