@@ -78,6 +78,9 @@ GLfloat position_car5 = 0.0f, speed_car5 = 0.1f, rotation_car5 = 0.0f;
 void animation_car5(int value);
 void display_car5();
 
+	GLfloat position_waves = 0.0f, speed_waves = 0.1f ;
+	void animation_waves(int value);
+	void waves();
 
 int main(int argc, char** argv)
 {
@@ -87,15 +90,17 @@ int main(int argc, char** argv)
 
     glutDisplayFunc(WinterView);
     glutPostRedisplay();
-    
+
     glutKeyboardFunc(handleKeypress);
-    
+
     glutTimerFunc(10, animation_car1,0);
     glutTimerFunc(10, animation_car2,0);
     glutTimerFunc(10, animation_car3,0);
     glutTimerFunc(10, animation_car4,0);
     glutTimerFunc(10, animation_car5,0);
-    
+
+    glutTimerFunc(300, animation_waves, 0);
+
     glutTimerFunc(100, snowAnimation, 0);
 
     glutMainLoop();
@@ -4250,7 +4255,7 @@ void handleKeypress(unsigned char key, int x, int y)
             isNight = false;
             glutPostRedisplay();
             break;
-            
+
         case 'd':
             glutDisplayFunc(DayView);
             isNight = false;
@@ -4289,6 +4294,8 @@ void DayView()
     display_car3();
     display_car5();
     glLoadIdentity();
+
+    waves();
 
     Bridge();
 
@@ -4342,3 +4349,59 @@ void DayRiver()
     glVertex2f(1.0f,-0.27f);
     glEnd();
 }
+
+void animation_waves(int value)
+{
+
+    if(position_waves > 1.0)
+    {
+        position_waves = -1.0f;
+    }
+
+    position_waves += speed_waves;
+
+    glutPostRedisplay();
+
+
+    glutTimerFunc(300, animation_waves, 0);
+}
+
+void waves()
+{
+    glLineWidth(0.6);
+
+    glPushMatrix();
+
+    glTranslatef(position_waves,0,0);
+
+    glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+
+    glVertex2f(-0.1f,-0.4f);
+    glVertex2f(0.0f,-0.4f);
+
+    glVertex2f(-0.2f,-0.7f);
+    glVertex2f(-0.1f,-0.7f);
+
+    glVertex2f(0.5f,-0.6f);
+    glVertex2f(0.4f,-0.6f);
+
+    glVertex2f(0.6f,-0.45f);
+    glVertex2f(0.7f,-0.45f);
+
+    glVertex2f(-0.9f,-0.9f);
+    glVertex2f(-0.8f,-0.9f);
+
+    glVertex2f(0.6f,-0.82f);
+    glVertex2f(0.7f,-0.82f);
+
+    glVertex2f(0.6f,-0.82f);
+    glVertex2f(0.7f,-0.82f);
+
+    glEnd();
+
+    glPopMatrix();
+
+    glEnd();
+}
+
