@@ -23,6 +23,15 @@ void snowFall();
 void snowAnimation(int value);
 void Bridge();
 
+void Clock();
+void Idle();
+void OuterCircleForClock(GLfloat a, GLfloat b, GLfloat r);
+void InnerCircleForClock(GLfloat a, GLfloat b, GLfloat r);
+GLfloat ClockHour = 0.0f;
+GLfloat ClockMinute = 0.0f;
+GLfloat ClockSecond = 0.0f;
+
+
 void window1();
 void window2();
 void apart1();
@@ -94,8 +103,15 @@ void WinterView()
     WinterRiver();
 
     WinterSky();
-    
+
     Buildings();
+
+    glTranslatef(0.278,0.8,0);
+	glScalef(0.02,0.02,0);
+	Clock();
+	glLoadIdentity();
+
+
 
     glTranslatef(0.0,-0.122,0);
     display_car1();
@@ -4100,5 +4116,121 @@ void Buildings()
     glLoadIdentity();
 }
 
+
+
+void Clock()
+{
+    OuterCircleForClock(0.0f, 0.0f, 1.0f);
+
+ glPushMatrix();
+    glRotatef(ClockHour,0.0,0.0,0.1);
+    glBegin(GL_TRIANGLES);
+    glColor3ub(0,0,0);
+    glVertex2f(-0.05f,0.0f);
+    glVertex2f(0.05f,0.0f);
+    glVertex2f(0.0f,0.6f);
+    glEnd();
+    glPopMatrix();
+    ClockHour-=0.01f;
+
+    glPushMatrix();
+    glRotatef(ClockMinute,0.0,0.0,0.1);
+    glBegin(GL_TRIANGLES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,0.05f);
+    glVertex2f(0.0f,-0.05f);
+    glVertex2f(0.75f,0.0f);
+    glEnd();
+    glPopMatrix();
+    ClockMinute-=0.03f;
+
+    glPushMatrix();
+    glRotatef(ClockSecond,0.0,0.0,0.1);
+    glLineWidth(2);
+    glBegin(GL_LINES);
+    glColor3ub(255,0,0);
+    glVertex2f(0.0f,0.0f);
+    glVertex2f(-0.75f,0.0f);
+    glEnd();
+    glPopMatrix();
+    ClockSecond-=0.1f;
+
+    InnerCircleForClock(0.0f, 0.0f, 0.1f);
+
+    glLineWidth(7);
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,-1.0f);
+    glVertex2f(0.0f,-0.8f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(0.0f,1.0f);
+    glVertex2f(0.0f,0.8f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(-1.0f,0.0f);
+    glVertex2f(-0.8f,0.0f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(0,0,0);
+    glVertex2f(1.0f,0.0f);
+    glVertex2f(0.8f,0.0f);
+    glEnd();
+}
+
+void OuterCircleForClock(GLfloat a, GLfloat b, GLfloat r)
+{
+    int i;
+
+    GLfloat x=a;
+    GLfloat y=b;
+    GLfloat radius =r;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,255,255);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
+
+
+
+void InnerCircleForClock(GLfloat a, GLfloat b, GLfloat r)
+{
+    int i;
+
+    GLfloat x=a;
+    GLfloat y=b;
+    GLfloat radius =r;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3ub(255,0,0);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
 
 
