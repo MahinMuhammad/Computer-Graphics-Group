@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1660549070 source:c:\users\user\desktop\cggg\computer-graphics-group\manhattanbridge\manhattanbridge\main.cpp
+1660666630 source:c:\users\user\desktop\cggg\computer-graphics-group\manhattanbridge\manhattanbridge\main.cpp
 	<GLUT/glut.h>
 	<windows.h>
 	<GL/glut.h>
