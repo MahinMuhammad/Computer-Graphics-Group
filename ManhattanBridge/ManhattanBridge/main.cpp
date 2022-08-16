@@ -4122,7 +4122,7 @@ void Clock()
 {
     OuterCircleForClock(0.0f, 0.0f, 1.0f);
 
-    glPushMatrix();
+ glPushMatrix();
     glRotatef(ClockHour,0.0,0.0,0.1);
     glBegin(GL_TRIANGLES);
     glColor3ub(0,0,0);
