@@ -103,6 +103,10 @@ GLfloat position_waves = 0.0f, speed_waves = 0.1f ;
 void animation_waves(int value);
 void waves();
 
+void NightView();
+void NightRiver();
+void NightSky();
+
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
@@ -113,7 +117,7 @@ int main(int argc, char** argv)
     glutPostRedisplay();
 
     glutKeyboardFunc(handleKeypress);
-    
+
     glutTimerFunc(40, CloudAnimation1, 0);
     glutTimerFunc(40, CloudAnimation2, 0);
 
@@ -125,7 +129,7 @@ int main(int argc, char** argv)
 
     glutTimerFunc(200,animation_ship1,0);
     glutTimerFunc(100,animation_ship2,0);
-    
+
     glutTimerFunc(300, animation_waves, 0);
 
     glutTimerFunc(100, snowAnimation, 0);
@@ -4288,6 +4292,12 @@ void handleKeypress(unsigned char key, int x, int y)
             isNight = false;
             glutPostRedisplay();
             break;
+
+        case 'n':
+        glutDisplayFunc(NightView);
+        isNight=true;
+        glutPostRedisplay();
+        break;
     }
 }
 
@@ -4303,7 +4313,7 @@ void DayView()
     DaySky();
 
     Sun();
-    
+
     glPushMatrix();
     glTranslatef(CloudPosition1,0,0);
     Cloud1();
@@ -4347,7 +4357,7 @@ void DayView()
     waves();
 
     Bridge();
-    
+
     glScalef(-0.2,0.4,0);
     glTranslatef(0,-1.0,0);
     ship();
@@ -5113,3 +5123,67 @@ void ship2()
     glLoadIdentity();
     glPopMatrix();
 }
+
+void NightRiver()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(6, 55, 108);
+    glVertex2f(-1.0f,-0.27f);
+    glVertex2f(-1.0f,-1.0f);
+    glVertex2f(1.0f,-1.0f);
+    glVertex2f(1.0f,-0.27f);
+    glEnd();
+}
+
+void NightSky()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(3, 55, 95);
+    glVertex2f(-1.0f,1.0f);
+    glColor3ub(10, 15, 25);
+    glVertex2f(-1.0f,-0.15f);
+    glVertex2f(1.0f,-0.15f);
+    glVertex2f(1.0f,1.0f);
+    glEnd();
+}
+
+void NightView()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+
+
+    NightRiver();
+
+    NightSky();
+
+    Buildings();
+
+    glTranslatef(0.278,0.8,0);
+    glScalef(0.02,0.02,0);
+    Clock();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.122,0);
+    display_car1();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.134,0);
+    display_car2();
+    glLoadIdentity();
+
+    waves();
+
+    Bridge();
+
+    glScalef(-0.2,0.4,0);
+    glTranslatef(0,-1.0,0);
+    ship();
+    glLoadIdentity();
+
+    ship2();
+
+    glFlush();
+}
+
