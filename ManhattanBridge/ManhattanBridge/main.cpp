@@ -21,6 +21,7 @@ void DayRiver();
 void DaySky();
 
 void Sun();
+void Moon();
 
 bool isNight = false;
 
@@ -106,6 +107,8 @@ void waves();
 void NightView();
 void NightRiver();
 void NightSky();
+void star();
+
 
 int main(int argc, char** argv)
 {
@@ -5158,6 +5161,10 @@ void NightView()
 
     NightSky();
 
+    star();
+
+    Moon();
+
     Buildings();
 
     glTranslatef(0.278,0.8,0);
@@ -5185,5 +5192,1269 @@ void NightView()
     ship2();
 
     glFlush();
+}
+
+void star()
+{
+
+
+    glTranslatef(0.0,0.8,0.0);                              // star 1
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glTranslatef(0.37,0.8,0.0);                              // star 2
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.65,0.7,0.0);                      // star 3
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.73,0.9,0.0);                          // star 4
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.3,0.76,0.0);                          // star 6
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.81,0.78,0.0);                          // star 7
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.57,0.84,0.0);                              // star 8
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.4,0.9,0.0);                              // star 8
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.7,0.83,0.0);                              // star 9
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.1,0.72,0.0);                              // star 10
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.4,0.7,0.0);                              // star 11
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.75,0.75,0.0);                              // star 12
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.1,0.89,0.0);                              // star 13
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.6,0.84,0.0);                              // star 14
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.2,0.78,0.0);                              // star 15
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.2,0.73,0.0);                              // star 16
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.1,0.81,0.0);                              // star 17
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.63,0.77,0.0);                              // star 18
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.8,0.7,0.0);                              // star 19
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.4,0.7,0.0);                              // star 20
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(-0.8,0.84,0.0);                              // star 21
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+    glTranslatef(0.2,0.88,0.0);                              // star 22
+
+    glScalef(0.1,0.1,0.0);
+    glBegin(GL_POLYGON); // start middle part
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 1
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(0.03f,0.0f);
+    glVertex2f(0.0f,0.07f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 2
+    glColor3ub(255,255,255);
+    glVertex2f(-0.03f,0.0f);
+    glVertex2f(-0.1f,0.0f);
+    glVertex2f(-0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 3
+    glColor3ub(255,255,255);
+    glVertex2f(-0.04f,-0.05f);
+    glVertex2f(-0.07f,-0.14f);
+    glVertex2f(0.0f,-0.09f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 4
+    glColor3ub(255,255,255);
+    glVertex2f(0.0f,-0.09f);
+    glVertex2f(0.07f,-0.14f);
+    glVertex2f(0.04f,-0.05f);
+
+    glEnd();
+
+    glBegin(GL_TRIANGLES); // star triangle 5
+    glColor3ub(255,255,255);
+    glVertex2f(0.04f,-0.05f);
+    glVertex2f(0.1f,0.0f);
+    glVertex2f(0.03f,0.0f);
+
+    glEnd();
+
+    glLoadIdentity();
+
+
+    glLoadIdentity();
+}
+void Moon()
+
+{
+
+    int i;
+
+
+
+    GLfloat x=0.9f;
+
+    GLfloat y=0.9f;
+
+    GLfloat radius =0.2f;
+
+    int triangleAmount = 20;
+
+
+
+    GLfloat twicePi = 2.0f * PI;
+
+
+
+    glBegin(GL_TRIANGLE_FAN);
+
+    glColor3ub(236, 236, 236);
+
+    glVertex2f(x, y);
+
+    for(i = 0; i <= triangleAmount; i++)
+
+    {
+
+        glVertex2f(
+
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+
+            y + (radius * sin(i * twicePi / triangleAmount))
+
+        );
+
+    }
+
+    glEnd();
+
 }
 
