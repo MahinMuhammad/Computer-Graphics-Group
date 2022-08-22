@@ -121,6 +121,9 @@ void RainFall();
 void RainAnimation(int value);
 GLfloat RainPos = 10.0f;
 
+void StormCloud(GLfloat a, GLfloat b, GLfloat r);
+void RainCloud();
+
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
@@ -140,7 +143,7 @@ int main(int argc, char** argv)
     glutTimerFunc(10, animation_car3,0);
     glutTimerFunc(10, animation_car4,0);
     glutTimerFunc(10, animation_car5,0);
-    
+
     glutTimerFunc(100, RainAnimation, 0);
 
     glutTimerFunc(200,animation_ship1,0);
@@ -6513,7 +6516,7 @@ void MonsoonView()
     MonsoonRiver();
 
     MonsoonSky();
-    
+
     Thunder1();
     Thunder2();
 
@@ -6552,7 +6555,10 @@ void MonsoonView()
     RainFall();
     glLoadIdentity();
     glPopMatrix();
-    
+
+    RainCloud();
+
+
     glFlush();
 }
 
@@ -7683,4 +7689,105 @@ void RainFall()
         Y -=0.2;
 
     }
+}
+
+void StormCloud(GLfloat a, GLfloat b, GLfloat r)
+{
+    int i;
+
+    GLfloat x=a;
+    GLfloat y=b;
+    GLfloat radius =r;
+    int triangleAmount = 20;
+
+    GLfloat twicePi = 2.0f * PI;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x, y);
+    for(i = 0; i <= triangleAmount; i++)
+    {
+        glVertex2f(
+            x + (radius * cos(i *  twicePi / triangleAmount)),
+            y + (radius * sin(i * twicePi / triangleAmount))
+        );
+    }
+    glEnd();
+}
+
+void RainCloud()
+{
+    glTranslatef(-0.05,0.95,0.0);//cloud3
+    glScalef(0.5,0.6,0.0);
+    glColor3ub(129,145,167);
+    StormCloud(0.0,0.0,0.1);
+    StormCloud(0.0,0.05,0.1);
+    StormCloud(0.0,-0.05,0.1);
+    StormCloud(-0.15,0.015,0.15);
+    StormCloud(0.15,0.015,0.15);
+    StormCloud(-0.3,0.025,0.1);
+    StormCloud(0.3,0.025,0.1);
+    StormCloud(0.0,0.1,0.1);
+
+    glLoadIdentity();
+
+    glTranslatef(-0.3,0.85,0);//cloud2
+    glScalef(0.5,0.6,0.0);
+
+    glColor3ub(171,200,218);
+    StormCloud(0.0,0.0,0.1);
+    StormCloud(0.0,0.05,0.1);
+    StormCloud(0.0,-0.05,0.1);
+    StormCloud(-0.15,0.015,0.15);
+    StormCloud(0.15,0.015,0.15);
+    StormCloud(-0.3,0.025,0.1);
+    StormCloud(0.3,0.025,0.1);
+    StormCloud(0.0,0.1,0.1);
+
+    glLoadIdentity();
+
+
+    glTranslatef(-0.4,0.95,0);//cloud1
+    glScalef(0.5,0.6,0.0);
+
+    glColor3ub(225,241,249);
+    StormCloud(0.0,0.0,0.1);
+    StormCloud(0.0,0.05,0.1);
+    StormCloud(0.0,-0.05,0.1);
+    StormCloud(-0.15,0.015,0.15);
+    StormCloud(0.15,0.015,0.15);
+    StormCloud(-0.3,0.025,0.1);
+    StormCloud(0.3,0.025,0.1);
+    StormCloud(0.0,0.1,0.1);
+
+
+    glLoadIdentity();
+
+    glTranslatef(0.7,0.95,0.0);//cloudR2
+    glScalef(0.5,0.6,0.0);
+    glColor3ub(129,145,167);
+    StormCloud(0.0,0.0,0.1);
+    StormCloud(0.0,0.05,0.1);
+    StormCloud(0.0,-0.05,0.1);
+    StormCloud(-0.15,0.015,0.15);
+    StormCloud(0.15,0.015,0.15);
+    StormCloud(-0.3,0.025,0.1);
+    StormCloud(0.3,0.025,0.1);
+    StormCloud(0.0,0.1,0.1);
+
+    glLoadIdentity();
+
+    glTranslatef(0.95,0.92,0);//cloudR1
+    glScalef(0.5,0.6,0.0);
+
+    glColor3ub(171,200,218);
+    StormCloud(0.0,0.0,0.1);
+    StormCloud(0.0,0.05,0.1);
+    StormCloud(0.0,-0.05,0.1);
+    StormCloud(-0.15,0.015,0.15);
+    StormCloud(0.15,0.015,0.15);
+    StormCloud(-0.3,0.025,0.1);
+    StormCloud(0.3,0.025,0.1);
+    StormCloud(0.0,0.1,0.1);
+
+    glLoadIdentity();
 }
