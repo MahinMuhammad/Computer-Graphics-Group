@@ -109,6 +109,9 @@ void NightRiver();
 void NightSky();
 void star();
 
+void MonsoonRiver();
+void MonsoonView();
+void MonsoonSky();
 
 int main(int argc, char** argv)
 {
@@ -4301,6 +4304,15 @@ void handleKeypress(unsigned char key, int x, int y)
         isNight=true;
         glutPostRedisplay();
         break;
+
+        case 'm':
+        glutDisplayFunc(MonsoonView);
+        isNight = true;
+        //RainThunderSound();
+        glutPostRedisplay();
+        break;
+
+
     }
 }
 
@@ -6456,5 +6468,72 @@ void Moon()
 
     glEnd();
 
+}
+
+
+void MonsoonRiver()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(22,108,155);
+    glVertex2f(-1.0f,-0.27f);
+    glVertex2f(-1.0f,-1.0f);
+    glVertex2f(1.0f,-1.0f);
+    glVertex2f(1.0f,-0.27f);
+    glEnd();
+}
+
+
+
+void MonsoonSky()
+{
+    glBegin(GL_QUADS);
+    glColor3ub(0,61,108);
+    glVertex2f(-1.0f,1.0f);
+    glVertex2f(-1.0f,-0.15f);
+    glColor3ub(109, 116, 130);
+    glVertex2f(1.0f,-0.15f);
+    glVertex2f(1.0f,1.0f);
+    glEnd();
+}
+
+void MonsoonView()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    MonsoonRiver();
+
+    MonsoonSky();
+
+    Buildings();
+
+    glTranslatef(0.278,0.8,0);
+    glScalef(0.02,0.02,0);
+    Clock();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.122,0);
+    display_car1();
+    display_car4();
+    glLoadIdentity();
+
+    glTranslatef(0.0,-0.134,0);
+    display_car2();
+    display_car3();
+    display_car5();
+    glLoadIdentity();
+
+    waves();
+
+    Bridge();
+
+    glScalef(-0.2,0.4,0);
+    glTranslatef(0,-1.0,0);
+    ship();
+    glLoadIdentity();
+
+    ship2();
+
+    glFlush();
 }
 
